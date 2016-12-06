@@ -6,15 +6,28 @@
 package meteo;
 
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 /**
  *
  * @author mosambardi
  */
 public abstract class Capteur {
-    private final DoubleProperty temperature = new SimpleDoubleProperty();
+    
+    private ObjectProperty<Double> objProp = new SimpleObjectProperty<>();
+    
+    private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjProp());
+
     private int maj; //Intervalle de mise à jour du capteur en secondes.
+    
+    public ObjectProperty<Double> getObjProp() {
+        return objProp;
+    }
+
+    public void setObjProp(ObjectProperty<Double> objProp) {
+        this.objProp = objProp;
+    }
     
     public double getTemperature(){
         return temperature.get();

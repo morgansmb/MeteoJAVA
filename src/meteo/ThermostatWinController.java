@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 
 /**
@@ -25,6 +24,7 @@ public class ThermostatWinController implements Initializable {
     private Capteur mCapt;
     
     
+    
     public ThermostatWinController(Capteur capt){
         this.mCapt=capt;
     }
@@ -36,7 +36,8 @@ public class ThermostatWinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10,40,0,1));
-        
-    }    
+        tempSpin.getValueFactory().valueProperty().bindBidirectional(mCapt.getObjProp());
+        mCapt.changementTemperature();
+    }
     
 }
