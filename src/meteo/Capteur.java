@@ -13,13 +13,14 @@ import javafx.beans.property.SimpleDoubleProperty;
  * @author mosambardi
  */
 public abstract class Capteur {
-    private DoubleProperty temperature = new SimpleDoubleProperty();
+    private final DoubleProperty temperature = new SimpleDoubleProperty();
+    private int maj; //Intervalle de mise à jour du capteur en secondes.
     
-    public Double getTemperature(){
+    public double getTemperature(){
         return temperature.get();
     }
     
-    public void setTemperature(Double temperature){
+    public final void setTemperature(double temperature){
         this.temperature.set(temperature);
     }
     
@@ -27,10 +28,19 @@ public abstract class Capteur {
         return temperature;
     }
     
-    public Capteur(Double temperature){
-        setTemperature(temperature);
+    public int getMaj(){
+        return maj;
     }
     
-    public abstract double changementTemperature();
+    public final void setMaj(int num){
+        this.maj=num;
+    }
+    
+    public Capteur(double temperature, int maj){
+        setTemperature(temperature);
+        setMaj(maj);
+    }
+    
+    public abstract void changementTemperature();
     
 }

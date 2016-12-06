@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField visible="${comboBox1.getValue().toString().equals(comboBox1.getItems().get(0))}" GridPane.rowIndex="1" />
+            <TextField visible="${comboBox1.getValue().equals(comboBox1.getItems().get(0))}" GridPane.rowIndex="1" />
             <TextField fx:id="tf2cb1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="comboBox1" prefWidth="150.0" GridPane.columnSpan="2" />
          </children>

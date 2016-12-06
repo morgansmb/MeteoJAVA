@@ -39,7 +39,6 @@ public class MainMenuWinController implements Initializable {
         listCb.add("algo2");
         listCb.add("algo3");
         comboBox1.getItems().addAll(listCb);
-        comboBox1.getItems().
         comboBox1.valueProperty().setValue(listCb.get(0));
         comboBox2.getItems().addAll(listCb);
         comboBox2.valueProperty().setValue(listCb.get(0));

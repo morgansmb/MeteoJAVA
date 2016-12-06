@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 
 /**
  * FXML Controller class
@@ -19,8 +20,14 @@ import javafx.scene.control.SpinnerValueFactory;
  */
 public class ThermostatWinController implements Initializable {
 
-    @FXML private Spinner<Double> tempSpinner;
+    @FXML private Spinner<Double> tempSpin;
     
+    private Capteur mCapt;
+    
+    
+    public ThermostatWinController(Capteur capt){
+        this.mCapt=capt;
+    }
     /**
      * Initializes the controller class.
      * @param url
@@ -28,7 +35,8 @@ public class ThermostatWinController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tempSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(-10,40,0,1));
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10,40,0,1));
+        
     }    
     
 }
