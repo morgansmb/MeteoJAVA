@@ -13,13 +13,11 @@ import java.util.Random;
  */
 public class CapteurLimite extends Capteur{
     
-    private double tempInit; // Température à l'initialistation.
     private double variation; //Variation max/min de la température.
     
     
-    public CapteurLimite(double temp, int maj, double init, double v) {
+    public CapteurLimite(double temp, int maj, double v) {
         super(temp, maj);
-        this.tempInit=init;
         this.variation=v;
     }
     
@@ -27,7 +25,7 @@ public class CapteurLimite extends Capteur{
     public void changementTemperature(){
         Random rand = new Random();
         Double res;
-        res = tempInit+rand.nextDouble()*variation*2-variation;
+        res = getTemperature()+rand.nextDouble()*variation*2-variation;
         setTemperature(res);
         notifyObservers();
     }

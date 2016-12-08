@@ -18,8 +18,10 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <GridPane GridPane.columnIndex="1">
+      <GridPane fx:id="GrilleHaut" GridPane.columnIndex="1">
         <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -28,13 +30,21 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField visible="${comboBox1.getValue().equals(comboBox1.getItems().get(0))}" GridPane.rowIndex="1" />
-            <TextField fx:id="tf2cb1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboBox1" prefWidth="150.0" GridPane.columnSpan="2" />
+            <TextField fx:id="tfHaut0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <TextField fx:id="tfHaut1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfHaut2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="tfHaut3" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxHaut" onAction="#clicComboBoxHaut" prefHeight="26.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" />
+            <Label fx:id="labelHautTemp" text="T°C" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelHautMaj" text="Maj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelHautOpt1" text="Opt1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelHautOpt2" text="Opt2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
-      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <GridPane fx:id="GrilleMilieu" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -43,13 +53,21 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboBox2" prefWidth="150.0" GridPane.columnSpan="2" />
+            <TextField fx:id="tfMilieu0" GridPane.rowIndex="1" />
+            <TextField fx:id="tfMilieu1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfMilieu2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="tfMilieu3" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxMilieu" onAction="#clicComboBoxMilieu" prefWidth="200.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" />
+            <Label fx:id="labelMilieuTemp" text="T°C" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelMilieuMaj" text="Maj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelMilieuOpt1" text="Opt1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelMilieuOpt2" text="Opt2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
-      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <GridPane fx:id="GrilleBas" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -58,16 +76,25 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ComboBox fx:id="comboBox3" prefWidth="150.0" GridPane.columnSpan="2" />
-            <TextField GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxBas" onAction="#clicComboBoxBas" prefWidth="200.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" />
+            <TextField fx:id="tfBas0" GridPane.rowIndex="1" />
+            <TextField fx:id="tfBas1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfBas2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="tfBas3" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="labelBasTemp" text="T°C" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelBasMaj" text="Maj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelBasOpt1" text="Opt1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="labelBasOpt2" text="Opt2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
-      <Label text="Capteur 1" />
-      <Label text="Capteur 2" GridPane.rowIndex="1" />
-      <Label text="Capteur 3" GridPane.rowIndex="2" />
-      <Spinner GridPane.columnIndex="2" />
-      <Spinner GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Spinner GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Label text="Capteur 1" GridPane.halignment="CENTER" />
+      <Label text="Capteur 2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label text="Capteur 3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Spinner fx:id="SpinnerHaut" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+      <Spinner fx:id="SpinnerMilieu" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Spinner fx:id="SpinnerBas" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="BoutonHaut" mnemonicParsing="false" text="Afficher..." GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <Button fx:id="BoutonMilieu" mnemonicParsing="false" text="Afficher..." GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <Button fx:id="BoutonBas" mnemonicParsing="false" text="Afficher..." GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
