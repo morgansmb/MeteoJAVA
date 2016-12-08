@@ -6,6 +6,7 @@
 package meteo;
 
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,17 +18,13 @@ import javafx.scene.image.ImageView;
  *
  * @author mosambardi
  */
-public class IconeWinController implements Initializable {
+public class IconeWinController extends Fenetre {
 
     
-    private Capteur capteur;
-    private ImagePathChooser imChoose;
-    private String imPath;
     @FXML private ImageView ivIcone;
     
-    public IconeWinController(Capteur cap){
-        capteur = cap;
-        imChoose = new ImagePathChooser(capteur.getTemperature());
+    public IconeWinController(Capteur capteur){
+        super(capteur);
     }
     /**
      * Initializes the controller class.
@@ -36,6 +33,12 @@ public class IconeWinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ivIcone.imageProperty().bind(new ValueToImageBinding(capteur.temperatureProperty()));
        
+    }
+
+    @Override
+    public void update(Observable obj, Object o) {
+       Double temp = (Double) o;
+       ivIcone.setImage(new Image(ImagePathChooser.chooseImage(temp)));
     }
     
     

@@ -29,5 +29,6 @@ public class CapteurLimite extends Capteur{
         Double res;
         res = tempInit+rand.nextDouble()*variation*2-variation;
         setTemperature(res);
+        notifyObservers();
     }
 }

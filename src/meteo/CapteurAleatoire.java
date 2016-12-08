@@ -28,5 +28,6 @@ public class CapteurAleatoire extends Capteur{
         Double res;
         res = rand.nextDouble()*50-10;
         setTemperature(res);
+        notifyObservers();
     }
 }

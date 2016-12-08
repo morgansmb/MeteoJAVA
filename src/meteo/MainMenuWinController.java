@@ -7,6 +7,8 @@ package meteo;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,6 +23,8 @@ import javafx.scene.control.TextField;
  */
 public class MainMenuWinController implements Initializable {
     
+    private List<Fenetre> listeFenetre;
+    private List<Capteur> listeCapteur;
     
     @FXML private ComboBox comboBox1;
     @FXML private ComboBox comboBox2;
@@ -44,6 +48,18 @@ public class MainMenuWinController implements Initializable {
         comboBox2.valueProperty().setValue(listCb.get(0));
         comboBox3.getItems().addAll(listCb);
         comboBox3.valueProperty().setValue(listCb.get(0));
+        
+        /*
+        Attendre la fin du menu
+        listeCapteur = new LinkedList<>();
+        listeFenetre = new LinkedList<>();
+        // Idée ??????
+        //Lors de la validation d'une fenetre, ajout d'un ubservateur pour le
+        //capteur choisis
+        listeCapteur.add(new CapteurAleatoire(5, 2));
+        listeCapteur.get(0).addObserver(new IconeWinController(listeCapteur.get(0)));
+
+        */
         
     }    
     

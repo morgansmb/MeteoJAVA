@@ -29,6 +29,7 @@ public class CapteurBorne extends Capteur{
         Double res;
         res = rand.nextDouble()*(max+abs(min))-min;
         setTemperature(res);
+        notifyObservers();
     }
 }
 

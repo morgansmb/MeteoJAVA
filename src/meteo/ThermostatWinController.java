@@ -6,6 +6,7 @@
 package meteo;
 
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,16 +18,15 @@ import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
  *
  * @author mosambardi
  */
-public class ThermostatWinController implements Initializable {
+public class ThermostatWinController extends Fenetre{
 
     @FXML private Spinner<Double> tempSpin;
     
-    private Capteur mCapt;
     
     
     
-    public ThermostatWinController(Capteur capt){
-        this.mCapt=capt;
+    public ThermostatWinController(Capteur capteur){
+        super(capteur);
     }
     /**
      * Initializes the controller class.
@@ -36,8 +36,14 @@ public class ThermostatWinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10,40,0,1));
-        tempSpin.getValueFactory().valueProperty().bindBidirectional(mCapt.getObjProp());
-        mCapt.changementTemperature();
+        tempSpin.getValueFactory().valueProperty().bindBidirectional(capteur.getObjProp());
+        capteur.changementTemperature();
+    }
+
+    @Override
+    public void update(Observable obj, Object o) {
+        Double temp = (Double) o;
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10, 40, temp, 1));
     }
     
 }
