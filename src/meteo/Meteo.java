@@ -22,7 +22,7 @@ public class Meteo extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         //Pb : comment gérer le patron stratégique puisque Capteur est abstraite
-        capteur = new CapteurAleatoire(15.8,5);
+        capteur = new Capteur(15.0,5,new StrategieBorne());
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
         mainWinLoader.setController(new IconeWinController(capteur));
         

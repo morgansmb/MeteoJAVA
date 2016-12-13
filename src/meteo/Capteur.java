@@ -13,13 +13,15 @@ import javafx.beans.property.SimpleObjectProperty;
  *
  * @author mosambardi
  */
-public abstract class Capteur extends ObservableBase {
+public class Capteur extends ObservableBase {
     
     private ObjectProperty<Double> objProp = new SimpleObjectProperty<>();
     
     private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjProp());
 
     private int maj; //Intervalle de mise à jour du capteur en secondes.
+    
+    private Strategie stratAlgo;
     
     public ObjectProperty<Double> getObjProp() {
         return objProp;
@@ -47,12 +49,20 @@ public abstract class Capteur extends ObservableBase {
     public final void setMaj(int num){
         this.maj=num;
     }
-    
-    public Capteur(double temperature, int maj){
-        setTemperature(temperature);
-        setMaj(maj);
+        
+    public final void setAlgo(Strategie strat){
+        this.stratAlgo = strat;
     }
     
-    public abstract void changementTemperature();
+    public void changeTemperature(){
+        setTemperature(this.stratAlgo.changementTemperature());
+    }
+    
+    public Capteur(double temperature, int maj, Strategie strat){
+        setTemperature(temperature);
+        setMaj(maj);
+        setAlgo(strat);
+    }
+    
     
 }

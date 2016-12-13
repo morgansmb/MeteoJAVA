@@ -5,11 +5,13 @@
  */
 package meteo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.beans.EventHandler;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -32,7 +34,9 @@ public class IconeWinController extends Fenetre {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ivIcone.imageProperty().bind(new ValueToImageBinding(capteur.temperatureProperty()));
-       
+        System.out.println(capteur.getTemperature());
+        capteur.changeTemperature();
+        System.out.println(capteur.getTemperature());       
     }
 
     @Override
@@ -40,10 +44,6 @@ public class IconeWinController extends Fenetre {
        Double temp = (Double) o;
        ivIcone.setImage(new Image(ImagePathChooser.chooseImage(temp)));
     }
-    
-    
-    
-    
-    
+ 
     
 }

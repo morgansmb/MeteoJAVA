@@ -37,7 +37,7 @@ public class ThermostatWinController extends Fenetre{
     public void initialize(URL url, ResourceBundle rb) {
         tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10,40,0,1));
         tempSpin.getValueFactory().valueProperty().bindBidirectional(capteur.getObjProp());
-        capteur.changementTemperature();
+        capteur.changeTemperature();
     }
 
     @Override
