@@ -13,23 +13,30 @@ import javafx.beans.property.SimpleObjectProperty;
  *
  * @author mosambardi
  */
-public class Capteur extends ObservableBase {
+public abstract class Capteur extends ObservableBase {
     
     private ObjectProperty<Double> objProp = new SimpleObjectProperty<>();
-    
-    private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjProp());
-
-    private int maj; //Intervalle de mise à jour du capteur en secondes.
-    
-    private Strategie stratAlgo;
-    
-    public ObjectProperty<Double> getObjProp() {
-        return objProp;
-    }
+        public ObjectProperty<Double> getObjProp() {
+            return objProp;
+        }
         public void setObjProp(ObjectProperty<Double> objProp) {
-            this.objProp = objProp;
+                this.objProp = objProp;
+        }
+        
+    private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjProp());
+        public DoubleProperty temperatureProperty (){
+                return temperature;
         }
     
+    private int maj; //Intervalle de mise à jour du capteur en secondes.
+        public int getMaj(){
+            return maj;
+        }
+
+        public final void setMaj(int num){
+            this.maj=num;
+        }
+        
     public double getTemperature(){
         return temperature.get();
     }
@@ -38,31 +45,11 @@ public class Capteur extends ObservableBase {
         this.temperature.set(temperature);
     }
     
-    public DoubleProperty temperatureProperty (){
-        return temperature;
-    }
+
+    public abstract void changeTemperature();
     
-    public int getMaj(){
-        return maj;
-    }
-    
-    public final void setMaj(int num){
-        this.maj=num;
-    }
-        
-    public final void setAlgo(Strategie strat){
-        this.stratAlgo = strat;
-    }
-    
-    public void changeTemperature(){
-        setTemperature(this.stratAlgo.changementTemperature());
-    }
-    
-    public Capteur(double temperature, int maj, Strategie strat){
+    public Capteur(double temperature, int maj){
         setTemperature(temperature);
         setMaj(maj);
-        setAlgo(strat);
-    }
-    
-    
+    }  
 }
