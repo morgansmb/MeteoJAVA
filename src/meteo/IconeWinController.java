@@ -5,9 +5,6 @@
  */
 package meteo;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.beans.EventHandler;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;

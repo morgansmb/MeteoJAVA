@@ -5,6 +5,10 @@
  */
 package meteo;
 
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author mosambardi
@@ -25,6 +29,20 @@ public class SimpleCapteur extends Capteur{
     
     public final void setAlgo(Strategie strat){
         this.stratAlgo = strat;
+    }
+
+    @Override
+    public void run() {
+        while (true)
+        {
+            this.changeTemperature();
+            try {
+                TimeUnit.SECONDS.sleep(getMaj());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
+                break;
+            }
+        }
     }
     
 }

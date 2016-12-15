@@ -6,8 +6,10 @@
 package meteo;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,8 +19,9 @@ public class MegaCapteur extends Capteur{
     
     private HashMap<Capteur,Integer> mapCapteur;
     
-    public MegaCapteur(double temperature, int maj) {
-        super(temperature, maj);
+    public MegaCapteur(int maj) {
+        super(0, maj);
+        mapCapteur = new HashMap<>();
     }
 
     @Override
@@ -31,16 +34,33 @@ public class MegaCapteur extends Capteur{
         }
         moyenne = total / size;
         super.setTemperature(moyenne);
+        System.out.println(moyenne);
     }
     
     public void ajouterCapteur(Capteur capteur, int poids)
     {
-        mapCapteur.put(capteur, new Integer(poids));
+        System.out.println(capteur.getTemperature());
+        mapCapteur.put(capteur, poids);
+        System.out.println("fefefo");
     }
     
     public void retirerCapteur(Capteur capteur)
     {
         mapCapteur.remove(capteur);
     }  
+
+    @Override
+    public void run() {
+        while (true)
+        {
+            this.changeTemperature();
+            try {
+                TimeUnit.MILLISECONDS.sleep(getMaj());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
+                break;
+            }
+        }
+    }
 }
 ;

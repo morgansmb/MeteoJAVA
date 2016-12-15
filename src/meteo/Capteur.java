@@ -13,7 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
  *
  * @author mosambardi
  */
-public abstract class Capteur extends ObservableBase {
+public abstract class Capteur extends ObservableBase implements Runnable {
     
     private ObjectProperty<Double> objProp = new SimpleObjectProperty<>();
         public ObjectProperty<Double> getObjProp() {
@@ -51,5 +51,7 @@ public abstract class Capteur extends ObservableBase {
     public Capteur(double temperature, int maj){
         setTemperature(temperature);
         setMaj(maj);
-    }  
+        ThreadManager tm = ThreadManager.getInstance();
+        tm.ajouterThread(this);
+    }
 }
