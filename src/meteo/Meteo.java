@@ -5,6 +5,12 @@
  */
 package meteo;
 
+import capteurs.MegaCapteur;
+import capteurs.Capteur;
+import capteurs.StrategieBorne;
+import capteurs.SimpleCapteur;
+import utils.ThreadManager;
+import controller.IconeWinController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,20 +29,19 @@ public class Meteo extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //Pb : comment gérer le patron stratégique puisque Capteur est abstraite
         capteur = new SimpleCapteur(15.0,3,new StrategieBorne());
-        capteur2 = new SimpleCapteur(25.0,3,new StrategieBorne());
+        //capteur2 = new SimpleCapteur(25.0,3,new StrategieBorne());
         
         
-        
+        /*
         mg = new MegaCapteur(2);
         mg.ajouterCapteur(capteur, 2);
-        mg.ajouterCapteur(capteur2, 2);
+        mg.ajouterCapteur(capteur2, 2); */
         ThreadManager tm = ThreadManager.getInstance();
         tm.startThread();
         
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
-        mainWinLoader.setController(new IconeWinController(mg));
+        mainWinLoader.setController(new IconeWinController(capteur));
         
         primaryStage.setTitle("Thermostat");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
@@ -48,5 +53,12 @@ public class Meteo extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    @Override
+    public void stop()
+    {
+        ThreadManager tm = ThreadManager.getInstance();
+        tm.stopThread();
     }
 }
