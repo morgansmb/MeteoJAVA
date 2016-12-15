@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/SimpleCapteur.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/Meteo.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/IconeWinController.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/Fenetre.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/Strategie.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/MegaCapteur.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/Capteur.java</file>
-            <file>file:/home/etud/info/mosambardi/2ndAnnée/Java/MeteoJAVA-master/src/meteo/StrategieBorne.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/IconeWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/MainMenuWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/Fenetre.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/ValueToImageBinding.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/ObservableBase.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/Capteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/Meteo.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/ImagePathChooser.java</file>
         </group>
     </open-files>
 </project-private>
