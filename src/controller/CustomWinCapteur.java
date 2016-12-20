@@ -20,14 +20,18 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.DoubleStringConverter;
 import capteurs.Capteur;
 import capteurs.SimpleCapteur;
+import capteurs.Strategie;
 import capteurs.StrategieBorne;
 import capteurs.StrategieLimite;
+import java.awt.BorderLayout;
+import java.io.IOException;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
  * @author nibilly
  */
-public class CustomWinCapteur implements Initializable {
+public class CustomWinCapteur extends BorderLayout implements Initializable {
     
     @FXML private ComboBox comboBoxAlgo;
     @FXML private ComboBox comboBoxWin;
@@ -38,11 +42,15 @@ public class CustomWinCapteur implements Initializable {
     @FXML private TextField textFieldMaj;
     @FXML private TextField textFieldOpt1;
     @FXML private TextField textFieldOpt2;
+    private SimpleCapteur capteur;
     
     private List<String> listCb;
     private List<String> listCbWin;
     private List<TextField> listTf;
     
+    public CustomWinCapteur(SimpleCapteur capt){
+        this.capteur=capt;
+    }
     
     
     @Override
@@ -102,19 +110,18 @@ public class CustomWinCapteur implements Initializable {
         int maj = new Integer(textFieldMaj.getText());
         int opt1 = new Integer(textFieldOpt1.getText());
         int opt2;
-        Capteur capteur = null;
         FXMLLoader load;
         
         switch((String)comboBoxAlgo.valueProperty().getValue()){
             case "Algo Aléatoire" : 
-                capteur = new SimpleCapteur(temp, maj, new StrategieBorne());
+                capteur.setAlgo(new StrategieBorne());
                 break;
             case "Algo Bornes" : 
                 opt2 = new Integer(textFieldOpt2.getText());
-                capteur = new SimpleCapteur(temp, maj, new StrategieBorne(opt1,opt2));
+                capteur.setAlgo(new StrategieBorne(opt1, opt2));
                 break;
             case "Algo Limité" : 
-                capteur = new SimpleCapteur(temp, maj, new StrategieLimite(temp, opt1));
+                capteur.setAlgo(new StrategieLimite(temp, opt1));
                 break;
             default : 
                 System.err.println("pb choix algo");

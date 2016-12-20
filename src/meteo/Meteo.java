@@ -9,8 +9,11 @@ import capteurs.MegaCapteur;
 import capteurs.Capteur;
 import capteurs.StrategieBorne;
 import capteurs.SimpleCapteur;
+import controller.CustomWinCapteur;
 import utils.ThreadManager;
 import controller.IconeWinController;
+import controller.MainMenuWinController;
+import java.awt.BorderLayout;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +45,9 @@ public class Meteo extends Application {
         
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
         mainWinLoader.setController(new IconeWinController(capteur));
+        
+        //FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
+        //mainWinLoader.setController(new MainMenuWinController());
         
         primaryStage.setTitle("Thermostat");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
