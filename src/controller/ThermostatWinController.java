@@ -36,14 +36,14 @@ public class ThermostatWinController extends Fenetre{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10,40,0,1));
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-9999,9999,0,1));
         tempSpin.getValueFactory().valueProperty().bindBidirectional(getCapteur().getObjProp());
     }
 
     @Override
     public void update(Observable obj, Object o) {
         Double temp = (Double) o;
-        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-10, 40, temp, 1));
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-9999, 9999, temp, 1));
     }
     
 }

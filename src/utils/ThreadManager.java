@@ -18,7 +18,7 @@ public class ThreadManager {
     private static HashMap<Capteur, Thread> mapThread;
     private static ThreadManager instanceUnique;
     
-    protected ThreadManager()
+    public ThreadManager()
     {
         mapThread = new HashMap<>();
     }

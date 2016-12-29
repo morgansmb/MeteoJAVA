@@ -5,16 +5,15 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="300.0" prefWidth="600.0" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/8.0.60"
-         xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomWinCapteur">
-<center>
-    <GridPane>
+<fx:root alignment="CENTER" type="javafx.scene.layout.HBox" 
+         xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane alignment="CENTER">
         <columnConstraints>
            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -87,8 +86,8 @@
            <Label fx:id="labelCapteur" text="Capteur1" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                 <ComboBox fx:id="comboBoxWin" onAction="#clicAfficher" prefHeight="26.0" prefWidth="150.0" />
-                 <Button mnemonicParsing="false" text="Afficher...">
+                 <ComboBox fx:id="comboBoxWin" prefHeight="26.0" prefWidth="150.0" />
+                 <Button fx:id="buttonWin" mnemonicParsing="false" onAction="#clicAfficher" text="Afficher...">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -97,5 +96,4 @@
             </VBox>
         </children>
      </GridPane>
- </center>
 </fx:root>

@@ -40,16 +40,16 @@ public class Meteo extends Application {
         mg = new MegaCapteur(2);
         mg.ajouterCapteur(capteur, 2);
         mg.ajouterCapteur(capteur2, 2); */
-        ThreadManager tm = ThreadManager.getInstance();
-        tm.startThread();
+        //ThreadManager tm = ThreadManager.getInstance();
+        //tm.startThread();
         
-        FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
-        mainWinLoader.setController(new IconeWinController(capteur));
+        //FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
+        //mainWinLoader.setController(new IconeWinController(capteur));
         
-        //FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
-        //mainWinLoader.setController(new MainMenuWinController());
+        FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
+        mainWinLoader.setController(new MainMenuWinController());
         
-        primaryStage.setTitle("Thermostat");
+        primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
     }
