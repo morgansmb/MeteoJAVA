@@ -26,13 +26,9 @@ import javafx.stage.Stage;
  */
 public class Meteo extends Application {
     
-    private Capteur capteur;
-    private Capteur capteur2;
-    private MegaCapteur mg;
-    
     @Override
     public void start(Stage primaryStage) throws IOException {
-        capteur = new SimpleCapteur(15.0,3,new StrategieBorne());
+       //capteur = new SimpleCapteur(15.0,3,new StrategieBorne());
         //capteur2 = new SimpleCapteur(25.0,3,new StrategieBorne());
         
         

@@ -1,0 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller;
+
+import capteurs.MegaCapteur;
+import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
+
+/**
+ * FXML Controller class
+ *
+ * @author syherail
+ */
+public class MegaCapWinController implements Initializable {
+    private ScrollPane scrollp;
+    private List<MegaCapteur> megaCapList;
+    
+    public MegaCapWinController(List<MegaCapteur> megaCapList)
+    {
+        megaCapList = new LinkedList<>();
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        GridPane gp = new GridPane();
+        gp.addColumn(0);
+        gp.addColumn(1);
+        gp.addColumn(2);
+        scrollp.setContent(gp);
+    }    
+    
+    private void OnAddClick()
+    {
+        
+    }
+    
+}
