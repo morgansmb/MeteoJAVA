@@ -29,17 +29,12 @@ public class MainMenuWinController implements Initializable {
     private CustomWinCapteur custom1;
     private CustomWinCapteur custom2;
     private CustomWinCapteur custom3;
-    private ThreadManager tm;
     
         
     public MainMenuWinController(){
-        SimpleCapteur cap1 = new SimpleCapteur(15.0, 5, new StrategieBorne());
-        SimpleCapteur cap2 = new SimpleCapteur(15.0, 5, new StrategieBorne(-5, 60));
-        SimpleCapteur cap3 = new SimpleCapteur(15.0, 5, new StrategieLimite(20.0, 2));
-        custom1= new CustomWinCapteur(cap1);
-        custom2= new CustomWinCapteur(cap2);
-        custom3= new CustomWinCapteur(cap3);
-        tm = ThreadManager.getInstance();
+        custom1= new CustomWinCapteur();
+        custom2= new CustomWinCapteur();
+        custom3= new CustomWinCapteur();
         
     }
     
@@ -49,6 +44,5 @@ public class MainMenuWinController implements Initializable {
         gridPaneMenu.add(custom1, 0, 0);
         gridPaneMenu.add(custom2, 0, 1);
         gridPaneMenu.add(custom3, 0, 2);
-        tm.startThread();
     }
 }

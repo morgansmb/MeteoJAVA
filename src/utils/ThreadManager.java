@@ -34,6 +34,13 @@ public class ThreadManager {
     public void ajouterThread(Capteur capteur)
     {
         mapThread.put(capteur, new Thread(capteur));
+        mapThread.get(capteur).start();
+    } 
+    
+    public void retirerThread(Capteur capteur)
+    {
+        mapThread.get(capteur).interrupt();
+        mapThread.remove(capteur);
     }
     
     public void startThread()

@@ -32,8 +32,8 @@ public class StrategieBorne implements Strategie{
     public double changementTemperature() {
         Random rand = new Random();
         if(min != null)
-            return rand.nextDouble()*max+min;
-        return rand.nextDouble()*MAX+MIN;
+            return rand.nextDouble()*(max-min)+min;
+        return rand.nextDouble()*(MAX-MIN)+MIN;
     }
 
     @Override

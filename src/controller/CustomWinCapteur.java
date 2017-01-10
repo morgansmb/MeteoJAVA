@@ -18,8 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.converter.DoubleStringConverter;
 import capteurs.SimpleCapteur;
+import capteurs.Strategie;
 import capteurs.StrategieBorne;
 import capteurs.StrategieLimite;
+import java.beans.EventHandler;
 import java.io.IOException;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -27,7 +29,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.converter.IntegerStringConverter;
+import utils.FactoryScene;
 import utils.ThreadManager;
 
 /**
@@ -47,17 +51,20 @@ public class CustomWinCapteur extends HBox implements Initializable {
     @FXML private TextField textFieldOpt2;
     @FXML private Button buttonWin;
     private SimpleCapteur capteur;
+    private ThreadManager tm;
+    private FactoryScene factoryFenetre;
     
     private List<String> listCb;
     private List<String> listCbWin;
     private List<TextField> listTf;
     
-    public CustomWinCapteur(SimpleCapteur capt){
-        this.capteur=capt;
+    public CustomWinCapteur(){
+        tm = ThreadManager.getInstance();
+        tm.startThread();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CustomWinCapteur.fxml"));
         loader.setRoot(this);
         loader.setController(this);
-        
+        factoryFenetre = new FactoryScene();
         try{
             loader.load();
         } catch (IOException e){
@@ -122,12 +129,11 @@ public class CustomWinCapteur extends HBox implements Initializable {
         Integer maj = new IntegerStringConverter().fromString(textFieldMaj.getText());
         Integer opt1;
         Integer opt2;
+        Strategie strat = null;
         Stage stage = new Stage();
-        FXMLLoader load;
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle("Mise en garde.");
         alert.setHeaderText("Attention à remplir correctement toutes les cases.");
-        
         
         switch((String)comboBoxAlgo.valueProperty().getValue()){
             case "Algo Aléatoire" :
@@ -141,7 +147,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
                     alert.showAndWait();
                     return;
                 }
-                capteur.setAlgo(new StrategieBorne());
+                strat = new StrategieBorne();
                 break;
             case "Algo Bornes" : 
                 opt1 = new IntegerStringConverter().fromString(textFieldOpt1.getText());
@@ -156,7 +162,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
                     alert.showAndWait();
                     return;
                 }
-                capteur.setAlgo(new StrategieBorne(opt1, opt2));
+                strat = new StrategieBorne(opt1, opt2);
                 break;
             case "Algo Limité" : 
                 opt1 = new IntegerStringConverter().fromString(textFieldOpt1.getText());
@@ -170,35 +176,30 @@ public class CustomWinCapteur extends HBox implements Initializable {
                     alert.showAndWait();
                     return;
                 }
-                capteur.setAlgo(new StrategieLimite(temp, opt1));
+                strat = new StrategieLimite(temp, opt1);
                 break;
             default : 
                 System.err.println("pb choix algo");
                 break;
         }
-        
-        capteur.setMaj(maj);
-        capteur.setTemperature(temp);
-        
-        switch((String)comboBoxWin.valueProperty().getValue()){
-            case "Spinner" :
-                load = new FXMLLoader(getClass().getResource("/gui/ThermostatWin.fxml"));
-                load.setController(new ThermostatWinController(capteur));
-                stage.setTitle("Thermostat");
-                stage.setScene(new Scene(load.load()));
+        if(strat != null){
+            capteur = new SimpleCapteur(temp, maj, strat);
+            tm.ajouterThread(capteur);
+            try
+            {
+                stage.setScene(factoryFenetre.creerFenetre(capteur, (String)comboBoxWin.valueProperty().getValue()));
                 stage.showAndWait();
-                break;
-            case "Icone" :
-                load = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
-                load.setController(new IconeWinController(capteur));
-                stage.setTitle("IconeWin");
-                stage.setScene(new Scene(load.load()));
-                stage.showAndWait();
-
-                break;
-            default :
-                System.err.println("pb choix fenetre");
-                break;
-        }
+            }
+            catch (Exception e){
+                System.err.println("Erreur création fenêtre.");
+                System.err.println(e.getMessage());
+            }
+            tm.retirerThread(capteur);
+            }
+        else
+            System.err.println("pb d'instance de la stratégie.");
+        
+        
     }
+        
 }

@@ -40,7 +40,7 @@ public class SimpleCapteur extends Capteur{
             try {
                 TimeUnit.SECONDS.sleep(getMaj());
             } catch (InterruptedException ex) {
-                Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
                 break;
             }
         }
