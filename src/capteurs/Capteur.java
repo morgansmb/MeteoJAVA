@@ -44,10 +44,20 @@ public abstract class Capteur extends ObservableBase implements Runnable {
             this.maj=num;
         }
         
+    private String nom;
+        public String getNom()
+        {
+            return nom;
+        }
+        
     public abstract void changeTemperature();
     
-    public Capteur(double temperature, int maj){
+    public Capteur(double temperature, int maj, String nom){
+        this.nom = nom;
         setTemperature(temperature);
         setMaj(maj);
+        ThreadManager tm = ThreadManager.getInstance();
+        tm.ajouterThread(this);
+        
     }
 }

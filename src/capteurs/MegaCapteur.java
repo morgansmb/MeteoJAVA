@@ -6,6 +6,8 @@
 package capteurs;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -19,8 +21,8 @@ public class MegaCapteur extends Capteur{
     
     private HashMap<Capteur,Integer> mapCapteur;
     
-    public MegaCapteur(int maj) {
-        super(0, maj);
+    public MegaCapteur(int maj, String nom) {
+        super(0, maj, nom);
         mapCapteur = new HashMap<>();
     }
 
@@ -47,7 +49,16 @@ public class MegaCapteur extends Capteur{
     public void retirerCapteur(Capteur capteur)
     {
         mapCapteur.remove(capteur);
-    }  
+    }
+    
+    public List<Capteur> getCapteurs()
+    {
+        List<Capteur> listCap = new LinkedList<>();
+        for (Map.Entry<Capteur,Integer> entry : mapCapteur.entrySet()){
+            listCap.add(entry.getKey());
+        }
+        return listCap;
+    }
 
     @Override
     public void run() {
@@ -63,4 +74,3 @@ public class MegaCapteur extends Capteur{
         }
     }
 }
-;

@@ -5,13 +5,18 @@
  */
 package controller;
 
+import capteurs.Capteur;
 import capteurs.MegaCapteur;
+import capteurs.SimpleCapteur;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -21,11 +26,12 @@ import javafx.scene.layout.GridPane;
  */
 public class MegaCapWinController implements Initializable {
     private ScrollPane scrollp;
-    private List<MegaCapteur> megaCapList;
+    private List<Capteur> capList;
+    @FXML private TreeView treevCap;
     
-    public MegaCapWinController(List<MegaCapteur> megaCapList)
+    public MegaCapWinController(CapteurManager cm)
     {
-        megaCapList = new LinkedList<>();
+        capList = cm.getList();
     }
     
     @Override
@@ -40,6 +46,46 @@ public class MegaCapWinController implements Initializable {
     
     private void OnAddClick()
     {
+        
+    }
+    
+    private void remplirTreeView(List<Capteur> listCap)
+    {
+        TreeItem<String> rootNode = new TreeItem<>("Liste des capteurs :");
+        rootNode.setExpanded(true);
+        for (Capteur capteur : listCap) {
+            if (capteur instanceof SimpleCapteur)
+            {
+                TreeItem<String> capLeaf = new TreeItem<>(capteur.getNom());
+                rootNode.getChildren().add(capLeaf);
+            }
+            else
+            {
+                TreeItem<String> megaCapNode = new TreeItem<>(capteur.getNom());
+                MegaCapteur mc = (MegaCapteur)capteur;
+                List<Capteur> megaCapList = mc.getCapteurs();
+                creationBrancheMC(megaCapNode, mc);
+            }
+            
+        }
+    }
+    
+    public void creationBrancheMC(TreeItem<String> megaCapNode, MegaCapteur mc)
+    {
+        List<Capteur> megaCapList = mc.getCapteurs();
+        for (Capteur cap : megaCapList)
+        {
+            if (cap instanceof SimpleCapteur)
+            {
+                TreeItem<String> mCapLeaf = new TreeItem<>(cap.getNom());
+                megaCapNode.getChildren().add(mCapLeaf);
+            }
+            else
+            {
+                TreeItem<String> mcNode = new TreeItem<>(cap.getNom());
+                creationBrancheMC(mcNode, mc);
+            }
+        }
         
     }
     

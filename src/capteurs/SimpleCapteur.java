@@ -17,8 +17,8 @@ public class SimpleCapteur extends Capteur{
     
     private Strategie stratAlgo;
     
-    public SimpleCapteur(double temperature, int maj, Strategie strat) {
-        super(temperature, maj);
+    public SimpleCapteur(double temperature, int maj, Strategie strat, String nom) {
+        super(temperature, maj, nom);
         setAlgo(strat);
     }
     
@@ -40,7 +40,7 @@ public class SimpleCapteur extends Capteur{
             try {
                 TimeUnit.SECONDS.sleep(getMaj());
             } catch (InterruptedException ex) {
-                //Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
                 break;
             }
         }
