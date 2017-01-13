@@ -5,10 +5,10 @@
  */
 package capteurs;
 
-import utils.ThreadManager;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import utils.IVisiteur;
 
 /**
  *
@@ -56,8 +56,7 @@ public abstract class Capteur extends ObservableBase implements Runnable {
         this.nom = nom;
         setTemperature(temperature);
         setMaj(maj);
-        ThreadManager tm = ThreadManager.getInstance();
-        tm.ajouterThread(this);
-        
     }
+    
+    public abstract void accepter(IVisiteur v);
 }

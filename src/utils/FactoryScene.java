@@ -6,14 +6,11 @@
 package utils;
 
 import capteurs.Capteur;
-import controller.Fenetre;
 import controller.IconeWinController;
 import controller.ThermostatWinController;
 import java.io.IOException;
-import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  *
@@ -23,11 +20,9 @@ public class FactoryScene {
 
     private static final String SPINNER = "Spinner";
     private static final String ICONE = "Icone";
-    private static final String SPINNERTITLE = "Thermostat";
-    private static final String ICONETITLE = "Icone";
     private FXMLLoader load;
     
-    public Scene creerFenetre(Capteur capteur, String nomFenetre) throws IOException {
+    public Scene creerFenetre(Capteur capteur, String nomFenetre) throws IOException, Exception {
         switch(nomFenetre){
             case SPINNER :
                 load = new FXMLLoader(getClass().getResource("/gui/ThermostatWin.fxml"));
@@ -39,6 +34,7 @@ public class FactoryScene {
                 break;
             default :
                 System.err.println("pb choix fenetre");
+                load = new FXMLLoader();
                 break;
         }
         return new Scene(load.load());

@@ -5,20 +5,19 @@
  */
 package meteo;
 
-import capteurs.MegaCapteur;
 import capteurs.Capteur;
-import capteurs.StrategieBorne;
+import capteurs.MegaCapteur;
 import capteurs.SimpleCapteur;
-import controller.CustomWinCapteur;
+import capteurs.StrategieLimite;
 import utils.ThreadManager;
-import controller.IconeWinController;
 import controller.MainMenuWinController;
-import java.awt.BorderLayout;
+import controller.MasterDetailWinController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.CapteurManager;
 
 /**
  *
@@ -41,13 +40,30 @@ public class Meteo extends Application {
         
         //FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
         //mainWinLoader.setController(new IconeWinController(capteur));
+        /*
+        Test du Master Detail
+        */
         
+        Capteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
+        Capteur v = new MegaCapteur(2,"mega1");
+        ((MegaCapteur)v).ajouterCapteur(c, 1);
+        CapteurManager.ajouterCapteur(v);
+        
+        
+        FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MasterDetailWin.fxml"));
+        mainWinLoader.setController(new MasterDetailWinController());
+        
+        primaryStage.setTitle("Menu");
+        primaryStage.setScene(new Scene(mainWinLoader.load()));
+        primaryStage.show();
+        /*
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
+        */
     }
 
     /**

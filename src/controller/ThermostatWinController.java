@@ -9,7 +9,6 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 import capteurs.Capteur;

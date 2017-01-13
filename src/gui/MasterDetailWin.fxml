@@ -27,14 +27,10 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" />
-                  <Button mnemonicParsing="false" onAction="#OnAddClick" text="Ajouter" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" text="Ajouter" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                </children>
             </GridPane>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <content>
-                  <TreeView fx:id="treevCap" prefHeight="280.0" prefWidth="192.0" />
-               </content>
-            </ScrollPane>
+            <TreeView fx:id="treevCap" prefHeight="212.0" prefWidth="195.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane>

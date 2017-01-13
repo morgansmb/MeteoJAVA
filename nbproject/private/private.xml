@@ -3,8 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/samue/Desktop/ProjetMeteo/MeteoJAVA/src/controller/MainMenuWinController.java</file>
-            <file>file:/C:/Users/samue/Desktop/ProjetMeteo/MeteoJAVA/src/controller/CustomWinCapteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/utils/VisiteurTreeItem.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/controller/MasterDetailWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/utils/IVisiteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/utils/FactoryCapteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/gui/MasterDetailWin.fxml</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/capteurs/SimpleCapteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/controller/MainMenuWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/capteurs/MegaCapteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/utils/ThreadManager.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/meteo/Meteo.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/controller/AddMegaCapWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/controller/ThermostatWinController.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/capteurs/Capteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/capteurs/StrategieLimite.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/controller/CustomWinCapteur.java</file>
+            <file>file:/C:/Users/Morgan/Documents/IUT/2dnAnnee/Java/MeteoJAVA/src/utils/CapteurManager.java</file>
         </group>
     </open-files>
 </project-private>

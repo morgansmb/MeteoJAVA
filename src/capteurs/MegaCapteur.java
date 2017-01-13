@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utils.IVisiteur;
 
 /**
  *
@@ -73,4 +74,15 @@ public class MegaCapteur extends Capteur{
             }
         }
     }
+
+    @Override
+    public void accepter(IVisiteur v) {
+        v.visiterMegaCapteur(this);
+    }
+    
+    @Override
+    public String toString(){
+        return this.getNom();
+    }
+
 }

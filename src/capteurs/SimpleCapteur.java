@@ -8,6 +8,7 @@ package capteurs;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utils.IVisiteur;
 
 /**
  *
@@ -39,11 +40,21 @@ public class SimpleCapteur extends Capteur{
             this.changeTemperature();
             try {
                 TimeUnit.SECONDS.sleep(getMaj());
-            } catch (InterruptedException ex) {
+            } 
+            catch (InterruptedException ex) {
                 Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
                 break;
             }
         }
     }
+
+    @Override
+    public void accepter(IVisiteur v) {
+        v.visiterSimpleCapteur(this);
+    }
     
+    @Override
+    public String toString(){
+        return this.getNom();
+    }
 }
