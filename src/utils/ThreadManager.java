@@ -16,41 +16,28 @@ import capteurs.Capteur;
 public class ThreadManager {
     
     private static HashMap<Capteur, Thread> mapThread;
-    private static ThreadManager instanceUnique;
     
-    public ThreadManager()
-    {
-        mapThread = new HashMap<>();
-    }
     
-    public static ThreadManager getInstance()
-    {
-        if (instanceUnique == null){
-            instanceUnique = new ThreadManager();
-        }
-        return instanceUnique;
-    }
-    
-    public void ajouterThread(Capteur capteur)
+    public static void ajouterThread(Capteur capteur)
     {
         mapThread.put(capteur, new Thread(capteur));
         mapThread.get(capteur).start();
     } 
     
-    public void retirerThread(Capteur capteur)
+    public static void retirerThread(Capteur capteur)
     {
         mapThread.get(capteur).interrupt();
         mapThread.remove(capteur);
     }
     
-    public void startThread()
+    public static void startThread()
     {
         for (Map.Entry<Capteur,Thread> entry : mapThread.entrySet()){
             entry.getValue().start();
         }
     }
     
-    public void stopThread()
+    public static void stopThread()
     {
         for (Map.Entry<Capteur,Thread> entry : mapThread.entrySet()){
             entry.getValue().interrupt();

@@ -176,7 +176,7 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
                 break;
         }
         if(strat != null){
-            capteur = new SimpleCapteur(temp, maj, strat);
+            capteur = new SimpleCapteur(temp, maj, strat,"CAPTEURTEST");
             //attention penser a récup le capteur de la treeview et de mettre a jour son algo plutot que d'en créer un autre
             tm.ajouterThread(capteur);
             Alert al =new Alert(AlertType.INFORMATION);
@@ -184,8 +184,6 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
             al.setHeaderText(null);
             al.setContentText("Vous avez bien changé l'algo du capteur selectionné");
             al.showAndWait();
-        }
-        
+        }   
     }
-    
 }

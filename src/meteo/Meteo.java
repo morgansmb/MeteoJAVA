@@ -10,7 +10,6 @@ import capteurs.MegaCapteur;
 import capteurs.SimpleCapteur;
 import capteurs.StrategieLimite;
 import utils.ThreadManager;
-import controller.MainMenuWinController;
 import controller.MasterDetailWinController;
 import java.io.IOException;
 import javafx.application.Application;
@@ -45,8 +44,10 @@ public class Meteo extends Application {
         */
         
         Capteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
-        Capteur v = new MegaCapteur(2,"mega1");
-        ((MegaCapteur)v).ajouterCapteur(c, 1);
+        Capteur bla = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur2");
+        MegaCapteur v = new MegaCapteur(2,"mega1");
+        v.ajouterCapteur(c, 1);
+        CapteurManager.ajouterCapteur(c);
         CapteurManager.ajouterCapteur(v);
         
         

@@ -9,12 +9,12 @@ import capteurs.Capteur;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.GridPane;
 import utils.CapteurManager;
 import utils.VisiteurTreeItem;
 
@@ -38,7 +38,19 @@ public class MasterDetailWinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         remplirTreeView();
-        treevCap = new TreeView<>(rootNode);
+        treevCap.setRoot(rootNode);
+        treevCap.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+
+        @Override
+        public void changed(ObservableValue observable, Object oldValue,
+                Object newValue) {
+
+            TreeItem<Capteur> selectedItem = (TreeItem<Capteur>) newValue;
+            System.out.println("Selected Text : " + selectedItem.getValue());
+            // do what ever you want 
+        }
+
+      });
     }
 
     private void remplirTreeView(){
@@ -46,6 +58,8 @@ public class MasterDetailWinController implements Initializable {
           capteur.accepter(visiteur);
         }
         rootNode = visiteur.getRootNode();
+        rootNode.setExpanded(true);
     }
+    
     
 }

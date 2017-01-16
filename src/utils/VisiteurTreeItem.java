@@ -29,6 +29,7 @@ public class VisiteurTreeItem implements IVisiteur{
     @Override
     public void visiterSimpleCapteur(SimpleCapteur sc) {
         TreeItem<Capteur> capLeaf = new TreeItem<>(sc);
+        System.out.println(capLeaf.getValue().getNom());
         parentToAdd.getChildren().add(capLeaf);
     }
 
@@ -36,11 +37,13 @@ public class VisiteurTreeItem implements IVisiteur{
     public void visiterMegaCapteur(MegaCapteur mc) {
         TreeItem<Capteur> oldParent = parentToAdd;
         parentToAdd = new TreeItem<>(mc);
+        parentToAdd.setExpanded(true);
         List<Capteur> listCap = mc.getCapteurs();
         for (Capteur cap : listCap)
         {
             cap.accepter(this);
         }
+        oldParent.getChildren().add(parentToAdd);
         parentToAdd = oldParent;
     }   
 }
