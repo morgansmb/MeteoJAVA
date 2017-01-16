@@ -17,7 +17,6 @@ public class ThreadManager {
     
     private static HashMap<Capteur, Thread> mapThread;
     
-    
     public static void ajouterThread(Capteur capteur)
     {
         mapThread.put(capteur, new Thread(capteur));

@@ -77,7 +77,6 @@ public class Meteo extends Application {
     @Override
     public void stop()
     {
-        ThreadManager tm = ThreadManager.getInstance();
-        tm.stopThread();
+        ThreadManager.stopThread();
     }
 }

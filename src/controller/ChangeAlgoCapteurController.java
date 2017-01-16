@@ -47,7 +47,6 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
     @FXML private TextField textFieldOpt1;
     @FXML private TextField textFieldOpt2;
     @FXML private Button buttonWin;
-    private ThreadManager tm;
     private SimpleCapteur capteur;
     private List<String> listCb;
     private List<TextField> listTf;
@@ -55,8 +54,7 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
     
     public ChangeAlgoCapteurController(){
         try {
-            tm = ThreadManager.getInstance();
-            tm.startThread();
+            ThreadManager.startThread();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ChangeAlgoCapteur.fxml"));
             loader.setRoot(this);
             loader.setController(this);
@@ -178,7 +176,7 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
         if(strat != null){
             capteur = new SimpleCapteur(temp, maj, strat,"CAPTEURTEST");
             //attention penser a récup le capteur de la treeview et de mettre a jour son algo plutot que d'en créer un autre
-            tm.ajouterThread(capteur);
+            ThreadManager.ajouterThread(capteur);
             Alert al =new Alert(AlertType.INFORMATION);
             al.setTitle("Infomartion");
             al.setHeaderText(null);

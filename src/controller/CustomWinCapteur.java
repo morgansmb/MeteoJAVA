@@ -18,8 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.DoubleStringConverter;
 import capteurs.SimpleCapteur;
 import java.io.IOException;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.util.converter.IntegerStringConverter;
 import utils.FactoryScene;
@@ -43,7 +41,6 @@ public class CustomWinCapteur extends HBox implements Initializable {
     @FXML private TextField textFieldOpt2;
     
     private SimpleCapteur capteur;
-    private ThreadManager tm;
     private Integer tabparams[];
     private FactoryScene factoryScene;
     private FactoryCapteur factoryCapteur;
@@ -60,8 +57,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
     private List<TextField> listTf;
     
     public CustomWinCapteur(){
-        tm = ThreadManager.getInstance();
-        tm.startThread();
+        ThreadManager.startThread();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CustomWinCapteur.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -139,7 +135,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
            
         capteur = factoryCapteur.creerCapteur((String)comboBoxAlgo.valueProperty().getValue(), temp, tabparams);
            
-        tm.ajouterThread(capteur);
+        ThreadManager.ajouterThread(capteur);
         try
         {
             stage.setScene(factoryScene.creerFenetre(capteur, (String)comboBoxWin.valueProperty().getValue()));
@@ -153,6 +149,6 @@ public class CustomWinCapteur extends HBox implements Initializable {
             System.err.println("Erreur création fenêtre.");
             System.err.println(e.getMessage());
         }
-        tm.retirerThread(capteur);
+        ThreadManager.retirerThread(capteur);
     }        
 }
