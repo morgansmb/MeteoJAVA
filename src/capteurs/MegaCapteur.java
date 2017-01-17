@@ -37,14 +37,11 @@ public class MegaCapteur extends Capteur{
         }
         moyenne = total / size;
         super.setTemperature(moyenne);
-        System.out.println(moyenne);
     }
     
     public void ajouterCapteur(Capteur capteur, int poids)
     {
-        System.out.println(capteur.getTemperature());
         mapCapteur.put(capteur, poids);
-        System.out.println("fefefo");
     }
     
     public void retirerCapteur(Capteur capteur)
@@ -78,11 +75,6 @@ public class MegaCapteur extends Capteur{
     @Override
     public void accepter(IVisiteur v) {
         v.visiterMegaCapteur(this);
-    }
-    
-    @Override
-    public String toString(){
-        return this.getNom();
     }
 
 }

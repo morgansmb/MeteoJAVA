@@ -8,6 +8,7 @@ package capteurs;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import utils.IVisiteur;
 
 /**
@@ -26,7 +27,6 @@ public class SimpleCapteur extends Capteur{
     @Override
     public void changeTemperature(){
         setTemperature(this.stratAlgo.changementTemperature());
-        System.out.println(getTemperature());
     }
     
     public final void setAlgo(Strategie strat){

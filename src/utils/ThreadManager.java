@@ -15,7 +15,7 @@ import capteurs.Capteur;
  */
 public class ThreadManager {
     
-    private static HashMap<Capteur, Thread> mapThread;
+    private static HashMap<Capteur, Thread> mapThread = new HashMap<>();
     
     public static void ajouterThread(Capteur capteur)
     {

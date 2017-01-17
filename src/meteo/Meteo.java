@@ -11,6 +11,7 @@ import capteurs.SimpleCapteur;
 import capteurs.StrategieLimite;
 import utils.ThreadManager;
 import controller.MasterDetailWinController;
+import controller.SimpleCapInfoController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -43,13 +44,21 @@ public class Meteo extends Application {
         Test du Master Detail
         */
         
-        Capteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
+        SimpleCapteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
         Capteur bla = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur2");
         MegaCapteur v = new MegaCapteur(2,"mega1");
-        v.ajouterCapteur(c, 1);
+        
+        v.ajouterCapteur(bla, 1);
+        
         CapteurManager.ajouterCapteur(c);
         CapteurManager.ajouterCapteur(v);
         
+        ThreadManager.ajouterThread(c);
+        ThreadManager.ajouterThread(bla);
+        ThreadManager.ajouterThread(v);
+        /*
+        ThreadManager.startThread();
+        */
         
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MasterDetailWin.fxml"));
         mainWinLoader.setController(new MasterDetailWinController());

@@ -19,20 +19,16 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import utils.FactoryScene;
-import utils.ThreadManager;
 
 /**
  * FXML Controller class
@@ -52,9 +48,9 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
     private List<TextField> listTf;
     @FXML private ComboBox comboBoxAlgo;
     
-    public ChangeAlgoCapteurController(){
+    public ChangeAlgoCapteurController(SimpleCapteur sc){
+        capteur = sc;
         try {
-            ThreadManager.startThread();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ChangeAlgoCapteur.fxml"));
             loader.setRoot(this);
             loader.setController(this);
@@ -174,9 +170,7 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
                 break;
         }
         if(strat != null){
-            capteur = new SimpleCapteur(temp, maj, strat,"CAPTEURTEST");
-            //attention penser a récup le capteur de la treeview et de mettre a jour son algo plutot que d'en créer un autre
-            ThreadManager.ajouterThread(capteur);
+            capteur.setAlgo(strat);
             Alert al =new Alert(AlertType.INFORMATION);
             al.setTitle("Infomartion");
             al.setHeaderText(null);

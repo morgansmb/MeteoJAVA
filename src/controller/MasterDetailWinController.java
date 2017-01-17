@@ -6,15 +6,22 @@
 package controller;
 
 import capteurs.Capteur;
+import capteurs.MegaCapteur;
+import capteurs.SimpleCapteur;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import utils.CapteurManager;
 import utils.VisiteurTreeItem;
 
@@ -29,6 +36,8 @@ public class MasterDetailWinController implements Initializable {
     private VisiteurTreeItem visiteur;
     private TreeItem<Capteur> rootNode;
     @FXML private TreeView<Capteur> treevCap;
+    @FXML private GridPane mainGrid;
+    @FXML private GridPane repGrid;
     
     public MasterDetailWinController(){
         capList = CapteurManager.getList();
@@ -44,12 +53,23 @@ public class MasterDetailWinController implements Initializable {
         @Override
         public void changed(ObservableValue observable, Object oldValue,
                 Object newValue) {
-
+            
             TreeItem<Capteur> selectedItem = (TreeItem<Capteur>) newValue;
-            System.out.println("Selected Text : " + selectedItem.getValue());
-            // do what ever you want 
+            if (selectedItem.getValue() instanceof SimpleCapteur)
+            {
+                Platform.runLater(() -> mainGrid.getChildren().remove(1) );
+                SimpleCapteur sc = (SimpleCapteur) selectedItem.getValue();
+                mainGrid.add(new SimpleCapInfoController(sc),1,0);
+            }
+            
+            /*
+            if (selectedItem.getValue() instanceof MegaCapteur)
+            {
+                MegaCapteur mc = (MegaCapteur) selectedItem.getValue();
+                mainGrid.add(new MegaCapInfoController(mc),1,0);
+                mainGrid.re
+            }*/
         }
-
       });
     }
 
@@ -59,7 +79,5 @@ public class MasterDetailWinController implements Initializable {
         }
         rootNode = visiteur.getRootNode();
         rootNode.setExpanded(true);
-    }
-    
-    
+    } 
 }

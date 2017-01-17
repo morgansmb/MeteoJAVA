@@ -5,19 +5,11 @@
  */
 package controller;
 
-import capteurs.Capteur;
-import capteurs.SimpleCapteur;
-import capteurs.StrategieBorne;
-import capteurs.StrategieLimite;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import utils.ThreadManager;
 
 /**
  * FXML Controller class

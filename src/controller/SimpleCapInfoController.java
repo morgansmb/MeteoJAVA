@@ -5,43 +5,51 @@
  */
 package controller;
 
+import capteurs.SimpleCapteur;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * FXML Controller class
  *
  * @author syherail
  */
-public class SimpleCapInfoController implements Initializable {
+public class SimpleCapInfoController extends GridPane implements Initializable {
 
+    private SimpleCapteur simpleCap;
     @FXML private Label nameLabel;
     @FXML private Label tempLabel;
     @FXML private TextField majTextField;
-    @FXML private GridPane gridSimpleCapInfo;
-    private ChangeAlgoCapteurController custom;
+    @FXML private GridPane mainGrid;
     
     
-    public SimpleCapInfoController(){
-        custom= new ChangeAlgoCapteurController();
+    public SimpleCapInfoController(SimpleCapteur sc){
+        simpleCap = sc;
+        try {
+            FXMLLoader simpleloader = new FXMLLoader(getClass().getResource("/gui/SimpleCapInfo.fxml"));
+            simpleloader.setRoot(this);
+            simpleloader.setController(this);
+            simpleloader.load();
+        } catch (IOException ex) {
+            //Logger.getLogger(ChangeAlgoCapteurController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /*
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gridSimpleCapInfo.add(custom, 1, 3);
-    }    
-    
-    
-    
+        this.add(new ChangeAlgoCapteurController(simpleCap), 1, 3);
+        nameLabel.textProperty().bind(simpleCap.nomProperty());
+        tempLabel.textProperty().bind(simpleCap.temperatureProperty().asString());
+        majTextField.textProperty().bindBidirectional(simpleCap.majProperty(), new NumberStringConverter());   
+    }     
 }
