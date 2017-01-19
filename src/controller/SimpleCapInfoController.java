@@ -42,9 +42,7 @@ public class SimpleCapInfoController extends GridPane implements Initializable {
             //Logger.getLogger(ChangeAlgoCapteurController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /*
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.add(new ChangeAlgoCapteurController(simpleCap), 1, 3);

@@ -6,6 +6,7 @@
 package controller;
 
 import capteurs.Capteur;
+import capteurs.MegaCapteur;
 import capteurs.SimpleCapteur;
 import java.net.URL;
 import java.util.List;
@@ -18,9 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.GridPane;
-import jdk.nashorn.internal.ir.BreakNode;
 import utils.CapteurManager;
-import utils.ThreadManager;
 import utils.VisiteurTreeItem;
 
 /**
@@ -63,13 +62,15 @@ public class MasterDetailWinController implements Initializable {
                 mainGrid.add(new SimpleCapInfoController(sc),1,0);
             }
             
-            /*
+            
             if (selectedItem.getValue() instanceof MegaCapteur)
             {
                 MegaCapteur mc = (MegaCapteur) selectedItem.getValue();
+                Node node = mainGrid.getChildren().get(0);
+                mainGrid.getChildren().clear();
+                mainGrid.add(node, 0, 0);
                 mainGrid.add(new MegaCapInfoController(mc),1,0);
-                mainGrid.re
-            }*/
+            }
         }
       });
     }

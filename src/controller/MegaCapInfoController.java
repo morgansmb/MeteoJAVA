@@ -6,7 +6,6 @@
 package controller;
 
 import capteurs.MegaCapteur;
-import com.sun.org.apache.bcel.internal.generic.L2D;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.util.converter.NumberStringConverter;
 
 /**
@@ -22,7 +22,7 @@ import javafx.util.converter.NumberStringConverter;
  *
  * @author syherail
  */
-public class MegaCapInfoController implements Initializable {
+public class MegaCapInfoController extends GridPane implements Initializable {
     @FXML private Label tempLabel;
     @FXML private Label nameLabel;
     @FXML private TextField majTf;
@@ -39,9 +39,7 @@ public class MegaCapInfoController implements Initializable {
             //Logger.getLogger(ChangeAlgoCapteurController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         nameLabel.textProperty().bind(megaCapteur.nomProperty());
