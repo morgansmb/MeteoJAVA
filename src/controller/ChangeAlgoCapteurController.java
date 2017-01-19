@@ -119,9 +119,6 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
         alert.setTitle("Mise en garde.");
         FXMLLoader load;
         
-        
-        
-        
         switch((String)comboBoxAlgo.valueProperty().getValue()){
             case "Algo Aléatoire" :
                 if(temp==null || maj==null){
@@ -170,6 +167,7 @@ public class ChangeAlgoCapteurController extends HBox implements Initializable {
                 break;
         }
         if(strat != null){
+            capteur.setMaj(maj);
             capteur.setAlgo(strat);
             Alert al =new Alert(AlertType.INFORMATION);
             al.setTitle("Infomartion");

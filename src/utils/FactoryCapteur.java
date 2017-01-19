@@ -56,7 +56,7 @@ public class FactoryCapteur {
                 strat = new StrategieBorne(tabparams[1], tabparams[2]);
                 break;
             case L:
-                if(temp==null || tabparams[0]==null || tabparams[2]==null){
+                if(temp==null || tabparams[0]==null || tabparams[1]==null){
                     throw new Exception("Il faut remplir correctement les trois premières cases.");
                 }
                 else if(temp <-10 || temp >40){

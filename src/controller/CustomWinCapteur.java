@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.converter.IntegerStringConverter;
 import utils.FactoryScene;
 import javafx.stage.Stage;
+import utils.CapteurManager;
 import utils.FactoryCapteur;
 import utils.ThreadManager;
 
@@ -141,6 +142,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
         alert.setHeaderText("Attention à remplir correctement toutes les cases.");
         try{
             capteur = factoryCapteur.creerCapteur(textFieldNom.getText(),(String)comboBoxAlgo.valueProperty().getValue(), temp, tabparams);
+            CapteurManager.ajouterCapteur(capteur);
             ThreadManager.ajouterThread(capteur);
         } catch(Exception e){
             alert.setContentText(e.getMessage());
@@ -161,6 +163,5 @@ public class CustomWinCapteur extends HBox implements Initializable {
             System.err.println("Erreur création fenêtre.");
             System.err.println(e.getMessage());
         }
-        ThreadManager.retirerThread(capteur);
-    }        
+    }
 }

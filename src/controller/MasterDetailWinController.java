@@ -14,6 +14,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.GridPane;
@@ -56,6 +57,9 @@ public class MasterDetailWinController implements Initializable {
             if (selectedItem.getValue() instanceof SimpleCapteur)
             {
                 SimpleCapteur sc = (SimpleCapteur) selectedItem.getValue();
+                Node node = mainGrid.getChildren().get(0);
+                mainGrid.getChildren().clear();
+                mainGrid.add(node, 0, 0);
                 mainGrid.add(new SimpleCapInfoController(sc),1,0);
             }
             

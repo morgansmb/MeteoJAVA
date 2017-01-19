@@ -43,7 +43,7 @@ public class ProgressWinController extends Fenetre{
     @Override
     public void update(Observable obj, Object o) {
         Double temp = (Double) o;
-        tempProgress.setProgress(temp);
+        tempProgress.progressProperty().set(temp);
     }
     
 }

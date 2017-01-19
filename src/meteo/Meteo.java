@@ -32,7 +32,7 @@ public class Meteo extends Application {
         Test du Master Detail
         */
         
-        
+        /*
         SimpleCapteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
         Capteur bla = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur2");
         MegaCapteur v = new MegaCapteur(2,"mega1");
@@ -52,15 +52,17 @@ public class Meteo extends Application {
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
+        */
         
-        /*
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
+        primaryStage.setMinHeight(450);
+        primaryStage.setMinWidth(550);
         primaryStage.show();
-        */
+        
     }
 
     /**

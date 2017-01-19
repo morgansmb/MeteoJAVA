@@ -48,6 +48,7 @@ public class SimpleCapInfoController extends GridPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.add(new ChangeAlgoCapteurController(simpleCap), 1, 3);
+        this.add(new AffichageCapteurController(simpleCap), 1, 4);
         nameLabel.textProperty().bind(simpleCap.nomProperty());
         tempLabel.textProperty().bind(simpleCap.temperatureProperty().asString());
         majTextField.textProperty().bindBidirectional(simpleCap.majProperty(), new NumberStringConverter());   

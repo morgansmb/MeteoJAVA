@@ -32,7 +32,6 @@ public class SimpleCapteur extends Capteur{
         Integer max = stratAlgo.getMax();
         setMax(max.toString());
         setPourcent((super.getTemperature()-min)/(max-min));
-        System.out.println("T°c : "+getTemperature());
     }
     
     public final void setAlgo(Strategie strat){

@@ -47,7 +47,7 @@ public abstract class Capteur extends ObservableBase implements Runnable {
     private DoubleProperty pourcent = DoubleProperty.doubleProperty(this.getObjPourcProp());
         public DoubleProperty pourcentProperty (){return pourcent;}
         public double getPourcent(){return pourcent.get();}
-        public final void setPourcent(double value){this.pourcent.set(value);}
+        public final void setPourcent(double value){ Platform.runLater(() -> this.pourcent.set(value));}
         
     private final StringProperty min = new SimpleStringProperty();
         public StringProperty minProperty(){return min;}

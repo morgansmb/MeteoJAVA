@@ -66,7 +66,7 @@ public class MegaCapteur extends Capteur{
             try {
                 TimeUnit.MILLISECONDS.sleep(getMaj());
             } catch (InterruptedException ex) {
-                Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(SimpleCapteur.class.getName()).log(Level.SEVERE, null, ex);
                 break;
             }
         }
