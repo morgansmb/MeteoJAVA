@@ -32,7 +32,7 @@ public abstract class Capteur extends ObservableBase implements Runnable {
     private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjTempProp());
         public DoubleProperty temperatureProperty (){ return temperature;}
         public double getTemperature(){return temperature.get();}
-        public final void setTemperature(double temperature){this.temperature.set(temperature);}
+        public final void setTemperature(double temperature){Platform.runLater(()-> this.temperature.set(temperature));}
 
     private IntegerProperty maj = new SimpleIntegerProperty();
         public final void setMaj(int value) { maj.set(value); }
@@ -53,6 +53,7 @@ public abstract class Capteur extends ObservableBase implements Runnable {
         public StringProperty minProperty(){return min;}
         public String getMin(){return min.get();}
         public final void setMin(String value){this.min.set(value);}
+        
     private final StringProperty max = new SimpleStringProperty();
         public StringProperty maxProperty(){return max;}
         public String getMax(){return max.get();}

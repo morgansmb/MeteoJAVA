@@ -6,23 +6,20 @@
 package controller;
 
 import capteurs.Capteur;
-import capteurs.MegaCapteur;
 import capteurs.SimpleCapteur;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import jdk.nashorn.internal.ir.BreakNode;
 import utils.CapteurManager;
+import utils.ThreadManager;
 import utils.VisiteurTreeItem;
 
 /**
@@ -48,6 +45,7 @@ public class MasterDetailWinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         remplirTreeView();
         treevCap.setRoot(rootNode);
+        treevCap.setShowRoot(false);
         treevCap.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
 
         @Override
@@ -57,7 +55,6 @@ public class MasterDetailWinController implements Initializable {
             TreeItem<Capteur> selectedItem = (TreeItem<Capteur>) newValue;
             if (selectedItem.getValue() instanceof SimpleCapteur)
             {
-                Platform.runLater(() -> mainGrid.getChildren().remove(1) );
                 SimpleCapteur sc = (SimpleCapteur) selectedItem.getValue();
                 mainGrid.add(new SimpleCapInfoController(sc),1,0);
             }
@@ -72,6 +69,22 @@ public class MasterDetailWinController implements Initializable {
         }
       });
     }
+    /*
+    public void clicSupprimer(){
+        treevCap.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+
+        @Override
+        public void changed(ObservableValue observable, Object oldValue,
+                Object newValue) {
+                TreeItem<Capteur> selectedItem = (TreeItem<Capteur>) newValue;
+                Capteur cap = selectedItem.getValue();
+                ThreadManager.retirerThread(cap);
+                CapteurManager.supprimerCapteur(cap);
+                selectedItem.getParent().getChildren().remove(oldValue);
+        }
+        });
+    }
+    */
 
     private void remplirTreeView(){
         for (Capteur capteur : capList) {

@@ -28,24 +28,11 @@ public class Meteo extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-       //capteur = new SimpleCapteur(15.0,3,new StrategieBorne());
-        //capteur2 = new SimpleCapteur(25.0,3,new StrategieBorne());
-        
-        
-        /*
-        mg = new MegaCapteur(2);
-        mg.ajouterCapteur(capteur, 2);
-        mg.ajouterCapteur(capteur2, 2); */
-        //ThreadManager tm = ThreadManager.getInstance();
-        //tm.startThread();
-        
-        //FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
-        //mainWinLoader.setController(new IconeWinController(capteur));
         /*
         Test du Master Detail
         */
         
-        /*
+        
         SimpleCapteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
         Capteur bla = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur2");
         MegaCapteur v = new MegaCapteur(2,"mega1");
@@ -65,15 +52,15 @@ public class Meteo extends Application {
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
-        */
         
+        /*
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
-        
+        */
     }
 
     /**
