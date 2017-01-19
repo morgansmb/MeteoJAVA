@@ -11,7 +11,15 @@ import javafx.beans.Observable;
  *
  * @author samue
  */
-public interface Strategie extends Observable{
+public abstract class Strategie implements Observable{
+    public static final int MIN = -10;
+    public static final int MAX = 40;
     
-    public double changementTemperature();
+    public abstract double changementTemperature();
+    public Integer getMin(){
+        return MIN;
+    }
+    public Integer getMax(){
+        return MAX;
+    }
 }

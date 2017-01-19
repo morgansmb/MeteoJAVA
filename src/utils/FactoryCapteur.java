@@ -13,7 +13,6 @@ import capteurs.StrategieBorne;
 import capteurs.StrategieLimite;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.scene.control.Alert;
 
 /**
  *
@@ -21,73 +20,52 @@ import javafx.scene.control.Alert;
  */
 public class FactoryCapteur {
     private Strategie strat;
-    private Alert alert;
-    private String nom;
     private static final String A = "Algo Aléatoire";
     private static final String B = "Algo Bornes";
     private static final String L = "Algo Limité";
-    private static int id=0;
     
     /**
      * creer la strategie et le simple capteur
-     * @param nomStrat
-     * @param temp
-     * @param tabparams contient maj, et en fonction de la strategie les options assocées
+     * @param nomStrat nom de la stratégie utilisée.
+     * @param temp température qu'aura le capteur au départ.
+     * @param tabparams contient maj, et en fonction de la strategie les options associées
      * @param nom nom du capteur
      * @return Le capteur instancié
+     * @throws java.lang.Exception
      */
-    public SimpleCapteur creerCapteur(String nomStrat, Double temp, Integer[] tabparams) {
-        id++;
-        alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Mise en garde.");
-        alert.setHeaderText("Attention à remplir correctement toutes les cases.");
+    public SimpleCapteur creerCapteur(String nom,String nomStrat, Double temp, Integer[] tabparams) throws Exception {
+        if(nom.isEmpty())
+            throw new Exception("Le nom du capteur ne doit pas être vide.");
+        
         switch(nomStrat){
             case A:
-                nom = A + id;
-                if(temp==null || tabparams[0]==null){
-                    alert.setContentText("Il faut remplir correctement les deux premières cases.");
-                    alert.showAndWait();
-                    break;
-                }
+                if(temp==null || tabparams[0]==null)
+                    throw new Exception("Il faut remplir correctement les deux premières cases.");
                 else if(temp <-10 || temp >40){
-                    alert.setContentText("La valeur de la température doit être comprise entre -10°C et +40°C.");
-                    alert.showAndWait();
-                    break;
+                    throw new Exception("La valeur de la température doit être comprise entre -10°C et +40°C.");
                 }
                 strat = new StrategieBorne();
                 break;
             case B:
-                nom = B + id;
                 if(temp==null || tabparams[0]==null || tabparams[1]==null || tabparams[2]==null){
-                    alert.setContentText("Il faut remplir correctement toutes les cases.");
-                    alert.showAndWait();
-                    break;
+                    throw new Exception("Il faut remplir correctement toutes les cases.");
                 }
                 else if(temp < tabparams[1] || temp > tabparams[2]){
-                    alert.setContentText("La température de départ doit être comprise entre les bornes min et max.");
-                    alert.showAndWait();
-                    break;
+                    throw new Exception("La température de départ doit être comprise entre les bornes min et max.");
                 }
                 strat = new StrategieBorne(tabparams[1], tabparams[2]);
                 break;
             case L:
-                nom = L + id;
                 if(temp==null || tabparams[0]==null || tabparams[2]==null){
-                    alert.setContentText("Il faut remplir correctement les trois premières cases.");
-                    alert.showAndWait();
-                    break;
+                    throw new Exception("Il faut remplir correctement les trois premières cases.");
                 }
                 else if(temp <-10 || temp >40){
-                    alert.setContentText("La valeur de la température doit être comprise entre -10°C et +40°C.");
-                    alert.showAndWait();
-                    break;
+                    throw new Exception("La valeur de la température doit être comprise entre -10°C et +40°C.");
                 }
                 strat = new StrategieLimite(tabparams[0], tabparams[1]);
                 break;
         }
-        SimpleCapteur capt = new SimpleCapteur(temp, tabparams[0], strat, nom);
-        
-        return capt;
+        return new SimpleCapteur(temp, tabparams[0], strat, nom); 
     }
     
     public Capteur creerCapteur(int maj, String nom, HashMap<Capteur, Integer> mapCapteur) {
@@ -98,6 +76,4 @@ public class FactoryCapteur {
         }
         return c;
     }
-
-    
 }

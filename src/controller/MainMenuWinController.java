@@ -27,7 +27,6 @@ public class MainMenuWinController implements Initializable {
         custom1= new CustomWinCapteur();
         custom2= new CustomWinCapteur();
         custom3= new CustomWinCapteur();
-        
     }
     
     

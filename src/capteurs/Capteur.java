@@ -21,25 +21,42 @@ import utils.IVisiteur;
  */
 public abstract class Capteur extends ObservableBase implements Runnable {
     
-    private ObjectProperty<Double> objProp = new SimpleObjectProperty<>();
-        public ObjectProperty<Double> getObjProp() {return objProp;}
-        public void setObjProp(ObjectProperty<Double> objProp) {this.objProp = objProp;}
+    private ObjectProperty<Double> objTempProp = new SimpleObjectProperty<>();
+        public ObjectProperty<Double> getObjTempProp() {return objTempProp;}
+        public final void setObjTempProp(ObjectProperty<Double> objTempProp) {this.objTempProp = objTempProp;}
         
-    private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjProp());
+    private ObjectProperty<Double> objPourcProp = new SimpleObjectProperty<>();
+        public ObjectProperty<Double> getObjPourcProp() {return objPourcProp;}
+        public final void setObjPourcProp(ObjectProperty<Double> value) {this.objPourcProp = value;}
+        
+    private DoubleProperty temperature = DoubleProperty.doubleProperty(getObjTempProp());
         public DoubleProperty temperatureProperty (){ return temperature;}
         public double getTemperature(){return temperature.get();}
-        public void setTemperature(double temperature){Platform.runLater(() ->this.temperature.set(temperature));}
+        public final void setTemperature(double temperature){this.temperature.set(temperature);}
 
     private IntegerProperty maj = new SimpleIntegerProperty();
-        public void setMaj(int value) { maj.set(value); }
+        public final void setMaj(int value) { maj.set(value); }
         public int getMaj() { return maj.get(); }
         public IntegerProperty majProperty() { return maj; }
     
     private StringProperty nom = new SimpleStringProperty();
         public StringProperty nomProperty() { return nom; }
-        public void setNom(String value){ nom.set(value); }
+        public final void setNom(String value){ nom.set(value); }
         public String getNom() { return nom.get(); }
+    
+    private DoubleProperty pourcent = DoubleProperty.doubleProperty(this.getObjPourcProp());
+        public DoubleProperty pourcentProperty (){return pourcent;}
+        public double getPourcent(){return pourcent.get();}
+        public final void setPourcent(double value){this.pourcent.set(value);}
         
+    private final StringProperty min = new SimpleStringProperty();
+        public StringProperty minProperty(){return min;}
+        public String getMin(){return min.get();}
+        public final void setMin(String value){this.min.set(value);}
+    private final StringProperty max = new SimpleStringProperty();
+        public StringProperty maxProperty(){return max;}
+        public String getMax(){return max.get();}
+        public final void setMax(String value){this.max.set(value);}
 
     public abstract void changeTemperature();
     
@@ -47,6 +64,11 @@ public abstract class Capteur extends ObservableBase implements Runnable {
         setNom(nom);
         setTemperature(temperature);
         setMaj(maj);
+    }
+    
+    @Override
+    public String toString(){
+        return this.getNom();
     }
     
     public abstract void accepter(IVisiteur v);

@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root alignment="CENTER" type="javafx.scene.layout.HBox" 
-         xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane alignment="CENTER">
         <columnConstraints>
            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
@@ -24,6 +23,12 @@
            <RowConstraints />
         </rowConstraints>
         <children>
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <Label fx:id="labelNom" text="Nom" />
+               <TextField fx:id="textFieldNom" />
+            </children>
+         </VBox>
             <GridPane fx:id="GrilleMilieu" GridPane.columnIndex="1">
               <columnConstraints>
                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -83,7 +88,6 @@
                  </VBox>
               </children>
            </GridPane>
-           <Label fx:id="labelCapteur" text="Capteur1" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
                  <ComboBox fx:id="comboBoxWin" prefHeight="26.0" prefWidth="150.0" />

@@ -5,6 +5,8 @@
  */
 package capteurs;
 
+import static capteurs.Strategie.MAX;
+import static capteurs.Strategie.MIN;
 import java.util.Random;
 import javafx.beans.InvalidationListener;
 
@@ -12,14 +14,13 @@ import javafx.beans.InvalidationListener;
  *
  * @author samue
  */
-public class StrategieBorne implements Strategie{
-    public static final int MIN = -10;
-    public static final int MAX = 40;
+public class StrategieBorne extends Strategie{
     private Integer min;
     private Integer max;
         
     public StrategieBorne(){
-        
+        this.min = MIN;
+        this.max = MAX;
     }
     
     public StrategieBorne(int mini, int maxi){
@@ -31,11 +32,19 @@ public class StrategieBorne implements Strategie{
     @Override
     public double changementTemperature() {
         Random rand = new Random();
-        if(min != null)
-            return rand.nextDouble()*(max-min)+min;
-        return rand.nextDouble()*(MAX-MIN)+MIN;
+        return rand.nextDouble()*(max-min)+min;
     }
 
+    @Override
+    public Integer getMin() {
+        return min;
+    }
+
+    @Override
+    public Integer getMax() {
+        return max;
+    }
+    
     @Override
     public void addListener(InvalidationListener listener) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

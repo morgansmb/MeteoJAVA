@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 import capteurs.Capteur;
+import capteurs.SimpleCapteur;
 
 /**
  * FXML Controller class
@@ -21,12 +22,13 @@ import capteurs.Capteur;
 public class ThermostatWinController extends Fenetre{
 
     @FXML private Spinner<Double> tempSpin;
-    
-    
-    
+    Double min,max;
     
     public ThermostatWinController(Capteur capteur){
         super(capteur);
+        SimpleCapteur capt = (SimpleCapteur)getCapteur();
+        min = Double.valueOf(capt.getMin());
+        max = Double.valueOf(capt.getMax());
     }
     /**
      * Initializes the controller class.
@@ -35,14 +37,14 @@ public class ThermostatWinController extends Fenetre{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-9999,9999,0,1));
-        tempSpin.getValueFactory().valueProperty().bindBidirectional(getCapteur().getObjProp());
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(min,max));
+        tempSpin.getValueFactory().valueProperty().bind(getCapteur().getObjTempProp());
     }
 
     @Override
     public void update(Observable obj, Object o) {
         Double temp = (Double) o;
-        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(-9999, 9999, temp, 1));
+        tempSpin.setValueFactory(new DoubleSpinnerValueFactory(min, max, temp));
     }
     
 }

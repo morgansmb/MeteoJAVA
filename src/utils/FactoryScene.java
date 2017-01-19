@@ -7,6 +7,7 @@ package utils;
 
 import capteurs.Capteur;
 import controller.IconeWinController;
+import controller.ProgressWinController;
 import controller.ThermostatWinController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ public class FactoryScene {
 
     private static final String SPINNER = "Spinner";
     private static final String ICONE = "Icone";
+    private static final String PROGRESS = "Mercure";
     private FXMLLoader load;
     
     public Scene creerFenetre(Capteur capteur, String nomFenetre) throws IOException, Exception {
@@ -31,6 +33,10 @@ public class FactoryScene {
             case ICONE :
                 load = new FXMLLoader(getClass().getResource("/gui/IconeWin.fxml"));
                 load.setController(new IconeWinController(capteur));
+                break;
+            case PROGRESS:
+                load = new FXMLLoader(getClass().getResource("/gui/ProgressWin.fxml"));
+                load.setController(new ProgressWinController(capteur));
                 break;
             default :
                 System.err.println("pb choix fenetre");

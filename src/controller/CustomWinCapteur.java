@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.DoubleStringConverter;
 import capteurs.SimpleCapteur;
 import java.io.IOException;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 import javafx.util.converter.IntegerStringConverter;
 import utils.FactoryScene;
@@ -39,6 +40,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
     @FXML private TextField textFieldMaj;
     @FXML private TextField textFieldOpt1;
     @FXML private TextField textFieldOpt2;
+    @FXML private TextField textFieldNom;
     
     private SimpleCapteur capteur;
     private Integer tabparams[];
@@ -51,6 +53,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
     private static final String LIMITE = "Algo Limité";
     private static final String SPINNER = "Spinner";
     private static final String ICONE = "Icone";
+    private static final String PROGRESS = "Mercure";
     
     private List<String> listCb;
     private List<String> listCbWin;
@@ -83,6 +86,7 @@ public class CustomWinCapteur extends HBox implements Initializable {
         
         listCbWin.add(SPINNER);
         listCbWin.add(ICONE);
+        listCbWin.add(PROGRESS);
         
         listTf.add(textFieldOpt1);
         listTf.add(textFieldOpt2);
@@ -132,13 +136,21 @@ public class CustomWinCapteur extends HBox implements Initializable {
         tabparams[0] = maj;
         tabparams[1] = new IntegerStringConverter().fromString(textFieldOpt1.getText());
         tabparams[2] = new IntegerStringConverter().fromString(textFieldOpt2.getText());
-           
-        capteur = factoryCapteur.creerCapteur((String)comboBoxAlgo.valueProperty().getValue(), temp, tabparams);
-           
-        ThreadManager.ajouterThread(capteur);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Mise en garde.");
+        alert.setHeaderText("Attention à remplir correctement toutes les cases.");
+        try{
+            capteur = factoryCapteur.creerCapteur(textFieldNom.getText(),(String)comboBoxAlgo.valueProperty().getValue(), temp, tabparams);
+            ThreadManager.ajouterThread(capteur);
+        } catch(Exception e){
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
         try
         {
-            stage.setScene(factoryScene.creerFenetre(capteur, (String)comboBoxWin.valueProperty().getValue()));
+            stage.setTitle(textFieldNom.getText());
+            stage.setScene(factoryScene.creerFenetre(capteur,(String)comboBoxWin.valueProperty().getValue()));
             stage.showAndWait();
         }
         catch (IOException e){

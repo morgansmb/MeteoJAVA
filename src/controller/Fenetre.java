@@ -20,9 +20,10 @@ import capteurs.Capteur;
 public abstract class Fenetre implements Observer, Initializable{
     
     private Capteur capteur;
-        public Capteur getCapteur() {
-            return capteur;
-        }
+    
+    public final Capteur getCapteur() {
+        return capteur;
+    }
     
     public Fenetre(Capteur capteur){
         this.capteur=capteur;

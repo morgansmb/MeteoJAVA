@@ -12,7 +12,7 @@ import javafx.beans.InvalidationListener;
  *
  * @author samue
  */
-public class StrategieLimite implements Strategie{
+public class StrategieLimite extends Strategie{
     
     private double init;
     private int variation;
