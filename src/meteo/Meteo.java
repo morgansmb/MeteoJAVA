@@ -6,19 +6,16 @@
 package meteo;
 
 import capteurs.Capteur;
-import capteurs.MegaCapteur;
-import capteurs.SimpleCapteur;
-import capteurs.StrategieLimite;
 import controller.MainMenuWinController;
 import utils.ThreadManager;
-import controller.MasterDetailWinController;
-import controller.SimpleCapInfoController;
 import java.io.IOException;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.CapteurManager;
+import utils.XMLSaver;
 
 /**
  *
@@ -53,7 +50,7 @@ public class Meteo extends Application {
         primaryStage.setScene(new Scene(mainWinLoader.load()));
         primaryStage.show();
         */
-        
+        CapteurManager.setListCap((List<Capteur>)XMLSaver.ouvrirXML("save.xml"));
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         
@@ -73,8 +70,9 @@ public class Meteo extends Application {
     }
     
     @Override
-    public void stop()
+    public void stop() throws IOException
     {
         ThreadManager.stopThread();
+        XMLSaver.sauvegarderXML(CapteurManager.getList(),"save.xml");
     }
 }

@@ -5,6 +5,7 @@
  */
 package capteurs;
 
+import java.io.Serializable;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -13,14 +14,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import sun.java2d.pipe.SpanShapeRenderer;
 import utils.IVisiteur;
 
 /**
  *
  * @author mosambardi
  */
-public abstract class Capteur extends ObservableBase implements Runnable {
+public abstract class Capteur extends ObservableBase implements Runnable, Serializable {
     
     private ObjectProperty<Double> objTempProp = new SimpleObjectProperty<>();
         public ObjectProperty<Double> getObjTempProp() {return objTempProp;}
@@ -67,6 +67,9 @@ public abstract class Capteur extends ObservableBase implements Runnable {
         setTemperature(temperature);
         setMaj(maj);
     }
+    
+    //constructeur vide pour serialization
+    public Capteur() {}
     
     @Override
     public String toString(){

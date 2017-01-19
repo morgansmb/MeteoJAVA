@@ -14,7 +14,10 @@ import java.util.List;
  * @author Morgan
  */
 public class CapteurManager {
-    public static List<Capteur> listAllCap = new ArrayList<>();
+    private static List<Capteur> listAllCap = new ArrayList<>();
+        public static void setListCap(List<Capteur> list) { listAllCap = list; }
+        public static List<Capteur> getList() { return listAllCap; }
+        
     
     public static void ajouterCapteur(Capteur cap){
         listAllCap.add(cap);
@@ -22,9 +25,5 @@ public class CapteurManager {
     
     public static void supprimerCapteur(Capteur cap){
         listAllCap.remove(cap);
-    }
-    
-    public static List<Capteur> getList(){
-        return listAllCap;
     }
 }

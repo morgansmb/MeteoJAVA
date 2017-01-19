@@ -41,7 +41,7 @@ public class ProgressWinController extends Fenetre{
         int middle = (abs(Integer.valueOf(capteur.getMax()))+abs(Integer.valueOf(capteur.getMin())))/2;
         labelMin.textProperty().bind(capteur.minProperty());
         labelMax.textProperty().bind(capteur.maxProperty());
-        labelMiddle.textProperty().bind(new SimpleStringProperty(String.valueOf(middle)));
+        labelMiddle.setText(String.valueOf(middle));
         tempProgress.progressProperty().bind(capteur.pourcentProperty());
     }
 

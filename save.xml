@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="capteurs.SimpleCapteur" id="SimpleCapteur0">
+    <void property="maj">
+     <int>2</int>
+    </void>
+    <void property="max">
+     <string>40</string>
+    </void>
+    <void property="min">
+     <string>-10</string>
+    </void>
+    <void property="nom">
+     <string>tt</string>
+    </void>
+    <void property="objPourcProp">
+     <void property="value">
+      <double>0.981297984618483</double>
+     </void>
+    </void>
+    <void property="objTempProp">
+     <void property="value">
+      <double>13.85527480849484</double>
+     </void>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

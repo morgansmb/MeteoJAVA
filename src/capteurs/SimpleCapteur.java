@@ -6,7 +6,6 @@
 package capteurs;
 
 import java.util.concurrent.TimeUnit;
-import javafx.application.Platform;
 import utils.IVisiteur;
 
 /**
@@ -23,6 +22,9 @@ public class SimpleCapteur extends Capteur{
         setMin(strat.getMin().toString());
         setMax(strat.getMax().toString());
     }
+    
+    //constructeur vide pour serialization
+    public SimpleCapteur() {}
     
     @Override
     public void changeTemperature(){

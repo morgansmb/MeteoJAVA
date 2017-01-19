@@ -10,8 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import utils.IVisiteur;
 
 /**
@@ -26,7 +24,10 @@ public class MegaCapteur extends Capteur{
         super(0, maj, nom);
         mapCapteur = new HashMap<>();
     }
-
+    
+    //constructeur vide pour serialization
+    public MegaCapteur() {}
+    
     @Override
     public void changeTemperature(){
         int size = mapCapteur.size();
