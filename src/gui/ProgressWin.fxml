@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label text="Mercure" BorderPane.alignment="CENTER">
          <font>
@@ -37,6 +37,11 @@
             </ProgressBar>
             <Label fx:id="labelMax" text="Label" GridPane.halignment="CENTER" />
             <Label fx:id="labelMin" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="labelMiddle" alignment="CENTER_RIGHT" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="70.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </center>
