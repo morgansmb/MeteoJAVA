@@ -17,7 +17,7 @@ import javafx.beans.InvalidationListener;
 public class StrategieBorne extends Strategie{
     private Integer min;
     private Integer max;
-        
+    
     public StrategieBorne(){
         this.min = MIN;
         this.max = MAX;

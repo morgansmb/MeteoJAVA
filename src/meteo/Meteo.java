@@ -28,6 +28,7 @@ public class Meteo extends Application {
     public void start(Stage primaryStage) throws IOException {
         List<Capteur> list = (List<Capteur>) XMLLoader.ouvrirXML("save.xml");
         CapteurManager.setListCap(list);
+        ThreadManager.startThread();
         ThreadManager.ajouterListAsMap(list);
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());

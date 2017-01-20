@@ -17,6 +17,8 @@ public class StrategieLimite extends Strategie{
     private double init;
     private int variation;
     
+    public StrategieLimite(){};
+    
     public StrategieLimite(double tinit,int v){
         this.init=tinit;
         this.variation=v;

@@ -5,13 +5,14 @@
  */
 package capteurs;
 
+import java.io.Serializable;
 import javafx.beans.Observable;
 
 /**
  *
  * @author samue
  */
-public abstract class Strategie implements Observable{
+public abstract class Strategie implements Observable,Serializable{
     public static final int MIN = -10;
     public static final int MAX = 40;
     

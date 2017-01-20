@@ -61,7 +61,6 @@ public class CustomWinCapteur extends HBox implements Initializable {
     private List<TextField> listTf;
     
     public CustomWinCapteur(){
-        ThreadManager.startThread();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CustomWinCapteur.fxml"));
         loader.setRoot(this);
         loader.setController(this);
