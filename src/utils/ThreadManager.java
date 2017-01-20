@@ -17,7 +17,9 @@ import java.util.List;
 public class ThreadManager {
     
     private static HashMap<Capteur, Thread> mapThread = new HashMap<>();
-    
+        public static HashMap<Capteur, Thread> getMap() { return mapThread; }
+        public static void setMap(HashMap<Capteur,Thread> map) { mapThread = map; }
+        
     public static void ajouterThread(Capteur capteur)
     {
         mapThread.put(capteur, new Thread(capteur));

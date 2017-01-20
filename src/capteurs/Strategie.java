@@ -16,6 +16,8 @@ public abstract class Strategie implements Observable,Serializable{
     public static final int MIN = -10;
     public static final int MAX = 40;
     
+    public Strategie() {}
+    
     public abstract double changementTemperature();
     public Integer getMin(){
         return MIN;

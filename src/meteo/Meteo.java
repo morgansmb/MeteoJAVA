@@ -9,6 +9,7 @@ import capteurs.Capteur;
 import controller.MainMenuWinController;
 import utils.ThreadManager;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +29,10 @@ public class Meteo extends Application {
     public void start(Stage primaryStage) throws IOException {
         List<Capteur> list = (List<Capteur>) XMLLoader.ouvrirXML("save.xml");
         CapteurManager.setListCap(list);
+        HashMap<Capteur, Thread> map = (HashMap<Capteur, Thread>) XMLLoader.ouvrirXML("thread.xml");
+        ThreadManager.setMap(map);
         ThreadManager.startThread();
-        ThreadManager.ajouterListAsMap(list);
+        
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         
@@ -53,5 +56,6 @@ public class Meteo extends Application {
     {
         ThreadManager.stopThread();
         XMLSaver.sauvegarderXML(CapteurManager.getList(),"save.xml");
+        XMLSaver.sauvegarderXML(ThreadManager.getMap(), "thread.xml");
     }
 }
