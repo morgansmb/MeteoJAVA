@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.CapteurManager;
+import utils.XMLLoader;
 import utils.XMLSaver;
 
 /**
@@ -25,32 +26,9 @@ public class Meteo extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        /*
-        Test du Master Detail
-        */
-        
-        /*
-        SimpleCapteur c = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur1");
-        Capteur bla = new SimpleCapteur(2,2,new StrategieLimite(20,2),"capteur2");
-        MegaCapteur v = new MegaCapteur(2,"mega1");
-        
-        v.ajouterCapteur(bla, 1);
-        
-        CapteurManager.ajouterCapteur(c);
-        CapteurManager.ajouterCapteur(v);
-        
-        ThreadManager.ajouterThread(c);
-        ThreadManager.ajouterThread(bla);
-        ThreadManager.ajouterThread(v);
-        
-        FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MasterDetailWin.fxml"));
-        mainWinLoader.setController(new MasterDetailWinController());
-        
-        primaryStage.setTitle("Menu");
-        primaryStage.setScene(new Scene(mainWinLoader.load()));
-        primaryStage.show();
-        */
-        CapteurManager.setListCap((List<Capteur>)XMLSaver.ouvrirXML("save.xml"));
+        List<Capteur> list = (List<Capteur>) XMLLoader.ouvrirXML("save.xml");
+        CapteurManager.setListCap(list);
+        ThreadManager.ajouterListAsMap(list);
         FXMLLoader mainWinLoader = new FXMLLoader(getClass().getResource("/gui/MainMenuWin.fxml"));
         mainWinLoader.setController(new MainMenuWinController());
         

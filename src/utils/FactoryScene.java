@@ -6,7 +6,6 @@
 package utils;
 
 import capteurs.Capteur;
-import com.sun.rowset.FilteredRowSetImpl;
 import controller.IconeWinController;
 import controller.MasterDetailWinController;
 import controller.ProgressWinController;

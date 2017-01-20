@@ -8,6 +8,7 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 import capteurs.Capteur;
+import java.util.List;
 
 /**
  *
@@ -41,5 +42,11 @@ public class ThreadManager {
         for (Map.Entry<Capteur,Thread> entry : mapThread.entrySet()){
             entry.getValue().interrupt();
         }
+    }
+    
+    public static void ajouterListAsMap(List<Capteur> list){
+       for (Capteur capteur : list){
+           ajouterThread(capteur);
+       } 
     }
 }

@@ -6,28 +6,27 @@
 package utils;
 
 import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
  *
  * @author Morgan
  */
-public class XMLSaver {
+public class XMLLoader {
     
-    private XMLSaver() {}
+    private XMLLoader() {}
     
-    public static void sauvegarderXML(Object o, String filename) throws FileNotFoundException, IOException{
-        XMLEncoder encoder = new XMLEncoder(new FileOutputStream(filename));
+    public static Object ouvrirXML(String filename) throws FileNotFoundException, IOException{
+        Object object = null;
+        XMLDecoder decoder = new XMLDecoder(new FileInputStream(filename));
         try{
-            encoder.writeObject(o);
-            encoder.flush();
+            object = decoder.readObject();
         }
         finally{
-            encoder.close();
+            decoder.close();
         }
+        return object;            
     }
 }
